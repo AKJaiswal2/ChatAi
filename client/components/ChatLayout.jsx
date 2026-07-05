@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
+
 import Welcome from "./Welcome";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
-import api from "../services/api";
+import { sendMessage as sendMessageAPI } from "../services/api";
 
 const ChatLayout = () => {
     const [messages, setMessages] = useState([]);
@@ -21,23 +22,13 @@ const ChatLayout = () => {
         setLoading(true);
 
         try {
-            const updatedMessages = [
-                ...messages,
-                {
-                    role: "user",
-                    content: message,
-                },
-            ];
-
-            const { data } = await api.post("/chat", {
-                messages: updatedMessages,
-            });
+            const data = await sendMessageAPI(message);
 
             setMessages((prev) => [
                 ...prev,
                 {
                     role: "assistant",
-                    content: data.reply,
+                    content: data.answer,
                 },
             ]);
         } catch (err) {
@@ -54,6 +45,7 @@ const ChatLayout = () => {
     };
 
     return (
+
         <div className="h-screen bg-[#212121] text-white flex flex-col">
             <Navbar />
 
@@ -68,11 +60,18 @@ const ChatLayout = () => {
                 )}
             </main>
 
-            <ChatInput
-                onSend={sendMessage}
-                disabled={loading}
-            />
+            <div className="flex justify-center pb-8">
+                <div className="w-full max-w-4xl flex items-end gap-3">
+                    <div className="flex-1">
+                        <ChatInput
+                            onSend={sendMessage}
+                            disabled={loading}
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
+
     );
 };
 

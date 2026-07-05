@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { FiPlus } from "react-icons/fi";
 import { IoArrowUp } from "react-icons/io5";
+import UploadButton from "./UploadButton";
 
 const ChatInput = ({ onSend, disabled }) => {
     const [input, setInput] = useState("");
@@ -25,9 +25,7 @@ const ChatInput = ({ onSend, disabled }) => {
         <div className="p-6">
             <div className="max-w-4xl mx-auto bg-[#2F2F2F] rounded-full flex items-center px-4 py-3 border border-[#444]">
 
-                <button className="w-10 h-10 rounded-full hover:bg-[#404040] flex items-center justify-center">
-                    <FiPlus size={20} />
-                </button>
+                <UploadButton />
 
                 <input
                     value={input}
