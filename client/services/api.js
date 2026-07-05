@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:5001/api",
+    baseURL: "https://chatai-s9ih.onrender.com/api",
 });
 
 const SESSION_KEY = "chat-session-id";
