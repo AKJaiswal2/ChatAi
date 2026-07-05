@@ -31,11 +31,7 @@ The assistant supports **Retrieval-Augmented Generation (RAG)**, **multi-agent o
 
 ## 🚀 Live Demo
 
-Frontend:
-> https://your-frontend-url.vercel.app
-
-Backend:
-> https://your-backend-url.vercel.app
+URL: https://chat-ai-one-tan.vercel.app/
 
 ---
 
